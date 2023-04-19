@@ -17,3 +17,8 @@ Ubuntu Desktop (192.168.1.4)
 Ubuntu Server
 	Usuario: Diego
 	Contraseña: 123
+
+
+MySQL
+	Proyecto
+	Admin123.

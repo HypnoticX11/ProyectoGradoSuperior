@@ -7,7 +7,7 @@ function Conect_database {
     #Creamos un nuevo objeto con la conexión de MySql 
 	$global:Connection = New-Object MySql.Data.MySqlClient.MySqlConnection
     #Creamos el texto que nos permite conectarnos a la base de datos
-	$ConnectionString = "server=" + "192.168.1.4" + ";port=3306;uid=" + $DB_USER.UserName + ";pwd=$passwd" + ";database="+"BBDD_infoSistemas"
+	$ConnectionString = "server=" + "192.168.1.4" + ";port=3306;uid=" + "Proyecto" + ";pwd=$passwd" + ";database="+"BBDD_infoSistemas"
 	$Connection.ConnectionString = $ConnectionString
 	#Abrimos la conexión
     $Connection.Open()
@@ -27,14 +27,27 @@ While ($tests -ne 10){
             $SO = Get-WmiObject -Class Win32_OperatingSystem -ComputerName IP_ADDRESS | Select-Object Caption
         }
         catch {
-            <#Do this if a terminating exception happens#>
+            $username = "Diego"
+            $password = ConvertTo-SecureString "123" -AsPlainText -Force
+            $cred = New-Object System.Management.Automation.PSCredential($username, $password)
+
+            $value = $true
+            $session = New-SSHSession -ComputerName $PC -Credential $cred
+            $Nombre = Invoke-SSHCommand -SessionId $session.SessionId -Command "hostname"
+            $SO = Invoke-SSHCommand -SessionId $session.SessionId -Command "lsb_release -a | grep 'Description:' | awk -F ':\t' '{print $2}'"
+            Remove-SSHSession -SessionId $session.SessionId
         }
         $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
         $sql.Connection = $Connection
-        $sql.CommandText = 'INSERT INTO Equipos_Encendidos VALUES (' + "'" + $PC + "'" + "'" + $Nombre + "'" + "'" + $SO + "'" + ');'
+        $sql.CommandText = 'INSERT INTO Equipos_Encendidos VALUES (' + "'" + $PC + "'" + "'" + $Nombre + "'" + "'" + $SO + "'" + "'" + $value + "'" + ');'
         $sql.ExecuteNonQuery() | Out-Null
     } else {
-        
+        $value = $false
+
+        $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
+        $sql.Connection = $Connection
+        $sql.CommandText = 'INSERT INTO Equipos_Encendidos VALUES (' + "'" + $PC + "'" + $value + "'" + ');'
+        $sql.ExecuteNonQuery() | Out-Null
     }
     $tests = $tests + 1
 }

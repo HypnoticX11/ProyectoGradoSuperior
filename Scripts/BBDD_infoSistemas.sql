@@ -6,7 +6,7 @@ USE BBDD_infoSistemas;
 
 CREATE TABLE Equipos_Encendidos (
     IP VARCHAR(20) NOT NULL,
-    NOMBRE_Equipo VARCHAR(45) NOT NULL,
-    SO VARCHAR(45) NOT NULL,
+    NOMBRE_Equipo VARCHAR(45),
+    SO VARCHAR(45),
     Encendido BOOLEAN NOT NULL,
 )
