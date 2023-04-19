@@ -1,0 +1,18 @@
+Ver el uso en % de la CPU:
+"{0:N2}%" -f (Get-Counter '\Processor(_Total)\% Processor Time' | Select-Object -ExpandProperty CounterSamples | Select-Object -ExpandProperty CookedValue)
+
+Ver el uso de RAM:
+Get-Counter '\Memory\% Committed Bytes In Use'
+"{0:N2}%" -f (Get-Counter '\Memory\% Committed Bytes In Use' | Select-Object -ExpandProperty CounterSamples | Select-Object -ExpandProperty CookedValue)
+
+Ver uso de disco:
+Get-Counter '\PhysicalDisk(_Total)\% Disk Time'
+
+Ver espacio libre en Disco:
+(Get-WmiObject Win32_LogicalDisk -Filter "DeviceID='C:'" | Select-Object -ExpandProperty FreeSpace) / (Get-WmiObject Win32_LogicalDisk -Filter "DeviceID='C:'" | Select-Object -ExpandProperty Size) * 100
+
+
+
+
+
+
