@@ -9,4 +9,5 @@ CREATE TABLE Equipos_Encendidos (
     NOMBRE_Equipo VARCHAR(45),
     SO VARCHAR(45),
     Encendido BOOLEAN NOT NULL,
+    PRIMARY KEY (IP)
 )
