@@ -54,26 +54,3 @@ While ($tests -ne 10){
 }
 
 $Connection.Close()
-
-#######################################################################
-# Test-Connection 192.168.1.1 -Quiet
-
-# #Install-Module Posh-SSH
-# #os linux
-# $cred = Get-Credential
-# $session = New-SSHSession -ComputerName REMOTE_COMPUTER_NAME -Credential $cred
-# Invoke-SSHCommand -SessionId $session.SessionId -Command "lsb_release -a"
-# Remove-SSHSession -SessionId $session.SessionId
-
-# #os windows
-# Get-CimInstance Win32_OperatingSystem | Select-Object Caption
-
-
-
-# #Creamos objeto de ejecución de comandos
-# $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
-# #Usamos la variable con la string de conexión para este nuevo objeto
-# $sql.Connection = $Connection
-# $sql.CommandText = 'INSERT INTO Empleados VALUES (' + "'" + $Usuario.DNI + "'" + "," + "'" + $Usuario.Nombre + "'" + "," + "'" +  $Usuario.Apellido + "'" + "," + "'" + $Usuario.Cargo + "'" + "," + $Usuario.Salario + "," + "'" + $Usuario.Departamento + "'" + ');'
-# #Ejecutamos la query
-# $sql.ExecuteNonQuery() | Out-Null
