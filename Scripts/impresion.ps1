@@ -13,14 +13,38 @@ function Conect_database {
     $Connection.Open()
 }
 
+Conect_database
+
 $Impresoras = Get-Printer -ComputerName 192.168.1.2
 foreach ($Impresora in $Impresoras){
     $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
     $sql.Connection = $Connection
-    $sql.CommandText = 'INSERT INTO Impresoras VALUES (' + "'" + $Impresora.Name + "'," + "'" + $Impresora.ComputerName + "'," + "'" + $Impresora.Type + "'," + $Impresora.DriverName + "'," + $Impresora.PortName + "'," + $Impresora.Shared + "'," + $Impresora.Published + "'," + ');'
+    $sql.CommandText = 'INSERT INTO Impresoras VALUES (' + "'" + $Impresora.Name + "'," + "'" + $Impresora.ComputerName + "'," + "'" + $Impresora.Type + "'," + "'" + $Impresora.DriverName + "','" + $Impresora.PortName + "','" + $Impresora.Shared + "','" + $Impresora.Published + "'" + ');'
     $sql.ExecuteNonQuery() | Out-Null
 }
 
+$Puertos = Get-PrinterPort -ComputerName 192.168.1.2
+foreach ($Puerto in $Puertos){
+    $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
+    $sql.Connection = $Connection
+    $sql.CommandText = 'INSERT INTO Puertos_Impresoras VALUES (' + "'" + $Puerto.Name + "'," + "'" + $Puerto.ComputerName + "'," + "'" + $Puerto.Description + "'," + "'" + $Puerto.PortMonitor + "'" + ');'
+    $sql.ExecuteNonQuery() | Out-Null
+}
 
+$Drivers = Get-PrinterDriver -ComputerName 192.168.1.2
+foreach ($Driver in $Drivers){
+    $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
+    $sql.Connection = $Connection
+    $sql.CommandText = 'INSERT INTO Puertos_Impresoras VALUES (' + "'" + $Driver.Name + "'," + "'" + $Driver.PrinterEnviroment + "'," + "'" + $Driver.MajorVersion + "'," + "'" + $Driver.Manufacturer + "'" + ');'
+    $sql.ExecuteNonQuery() | Out-Null
+}
+
+$Trabajos = Get-Pritjob -ComputerName 192.168.1.2
+foreach ($Trabajo in $Trabajos){
+    $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
+    $sql.Connection = $Connection
+    $sql.CommandText = 'INSERT INTO Puertos_Impresoras VALUES (' + "'" + $Trabajo.Id + "'," + "'" + $Trabajo.ComputerName + "'," + "'" + $Trabajo.PrinterName + "'," + "'" + $Trabajo.DocumentName + "'," + "'" + $Trabajo.SubmittedTime + "'," + "'" + $Trabajo.JobStatus + "'" + ');'
+    $sql.ExecuteNonQuery() | Out-Null
+}
 
 $Connection.Close()
