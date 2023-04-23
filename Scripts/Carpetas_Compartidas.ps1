@@ -26,7 +26,7 @@ foreach ($Carpeta in $Carpetas){
     foreach ($Permiso in $Permisos) {
         $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
         $sql.Connection = $Connection
-        $sql.CommandText = 'INSERT INTO Carpetas_Compartidas VALUES (' + "'" + $Permiso.Name + "'," + "'" + $Permiso.AccountName + "'," + "'" + $Permiso.AccessControlType + "'," + "'" + $Permiso.AccessRight + "'" + ');'
+        $sql.CommandText = 'INSERT INTO Permisos_Carpetas_Compartidas VALUES (' + "'" + $Permiso.Name + "'," + "'" + $Permiso.AccountName + "'," + "'" + $Permiso.AccessControlType + "'," + "'" + $Permiso.AccessRight + "'" + ');'
         $sql.ExecuteNonQuery() | Out-Null
     }  
 }

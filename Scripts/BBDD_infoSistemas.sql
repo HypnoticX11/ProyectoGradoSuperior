@@ -56,11 +56,11 @@ CREATE TABLE Carpetas_Compartidas (
     PRIMARY KEY (Nombre)
 );
 
-CREATE TABLE Carpetas_Compartidas (
+CREATE TABLE Permisos_Carpetas_Compartidas (
     Nombre VARCHAR(500) NOT NULL,
     Usuario VARCHAR(45),
     Tipo_Acceso VARCHAR(45),
-    Permisos VARCHAR(500),
+    Permisos VARCHAR(500)
 );
 
 CREATE TABLE Usuarios_Carpetas_Compartidas (
