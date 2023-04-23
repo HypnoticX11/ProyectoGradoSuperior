@@ -1,4 +1,3 @@
-#Creamos una Funci�n para conectarnos a la base de datos
 function Conect_database {
     #Almacenamos la contrasa�a que nos da el usuario en una variable
     $passwd = "Admin123."
@@ -15,27 +14,18 @@ function Conect_database {
 
 Conect_database
 
-$Carpetas = Get-SmbShare
-foreach ($Carpeta in $Carpetas){
-
-    $Path_arreglado = $Carpeta.Path
-    if ($Path_arreglado[-1] -eq "\") {
-        # Si la última letra es un signo de exclamación, eliminarlo
-        $Path_arreglado = $Path_arreglado -replace ".$"
-    }
-
+$Ambitos = Get-DHCPServerv4Scope
+foreach ($Ambito in $Ambitos) {
     $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
     $sql.Connection = $Connection
-    $sql.CommandText = 'INSERT INTO Carpetas_Compartidas VALUES (' + "'" + $Carpeta.Name + "'," + "'" + $Path_arreglado + "'," + "'" + $Carpeta.Description + "'" + ');'
+    $sql.CommandText = 'INSERT INTO Ambitos VALUES (' + "'" + $Ambito. + "'," + "'" + $Ambito. + "'," + "'" + $Ambito. + "'" + "'" + $Ambito. + "'," + "'" + $Ambito. + "'," + "'" + $Ambito. + "'" + ');'
     $sql.ExecuteNonQuery() | Out-Null
 
-    $Permisos = Get-SmbShareAccess -Name $Carpeta.Name
-    foreach ($Permiso in $Permisos) {
+    $Opciones = Get-ShcpServerv4OptionValue -ComputerName 192.168.1.2 -ScopeID $Ambito.ScopeId
+    foreach ($Opcion in $Opciones) {
         $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
         $sql.Connection = $Connection
-        $sql.CommandText = 'INSERT INTO Permisos_Carpetas_Compartidas VALUES (' + "'" + $Permiso.Name + "'," + "'" + $Permiso.AccountName + "'," + "'" + $Permiso.AccessControlType + "'," + "'" + $Permiso.AccessRight + "'" + ');'
+        $sql.CommandText = 'INSERT INTO Ambitos VALUES (' + "'" + $Ambito. + "'," + "'" + $Ambito. + "'," + "'" + $Ambito. + "'" + "'" + $Ambito. + "'," + "'" + $Ambito. + "'," + "'" + $Ambito. + "'" + ');'
         $sql.ExecuteNonQuery() | Out-Null
-    }  
+    }
 }
-
-$Connection.Close()
