@@ -19,7 +19,7 @@ $Carpetas = Get-SmbShare
 foreach ($Carpeta in $Carpetas){
     $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
     $sql.Connection = $Connection
-    $sql.CommandText = 'INSERT INTO Carpetas_Compartidas VALUES (' + "'" + $Carpeta.Path + "'," + "'" + $Carpeta.Description + "'," + "'" + $Carpeta.PrinterName + "'" + ');'
+    $sql.CommandText = 'INSERT INTO Carpetas_Compartidas VALUES (' + "'" + $Carpeta.Name + "'," + "'" + $Carpeta.Path + "'," + "'" + $Carpeta.Description + "'" + ');'
     $sql.ExecuteNonQuery() | Out-Null
 
     $Permisos = Get-SmbShareAccess -Name $Carpeta.Name
