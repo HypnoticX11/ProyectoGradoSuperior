@@ -15,7 +15,7 @@ CREATE TABLE Equipos_Encendidos (
 CREATE TABLE Drivers_Impresoras (
     Nombre VARCHAR(500) NOT NULL,
     Entorno_Impresion VARCHAR(45),
-    Version VARCHAR(45),
+    Version_Driver VARCHAR(45),
     Fabricante VARCHAR(500),
     PRIMARY KEY (Nombre)
 );
