@@ -21,7 +21,7 @@ foreach ($Carpeta in $Carpetas){
     $Path_arreglado = $Carpeta.Path
     if ($Path_arreglado[-1] -eq "\") {
         # Si la última letra es un signo de exclamación, eliminarlo
-        $Path_arreglado = $Path_arreglado.Substring(0, $Path_arreglado.Length - 1)
+        $Path_arreglado = $Path_arreglado -replace ".$"
     }
 
     $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
