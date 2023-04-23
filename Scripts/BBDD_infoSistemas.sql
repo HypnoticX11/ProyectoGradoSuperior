@@ -97,7 +97,7 @@ CREATE TABLE Reservas_Ambitos (
     PRIMARY KEY (ID)
 );
 
-CREATE TABLE Reservas_Ambitos (
+CREATE TABLE Estadísticas_Ambitos (
     ID_Ambito VARCHAR(45),
     IP_Libres VARCHAR(45),
     IP_Uso VARCHAR(45),
