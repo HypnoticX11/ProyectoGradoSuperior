@@ -48,3 +48,22 @@ CREATE TABLE Impresoras (
     Publicada VARCHAR(45),
     PRIMARY KEY (Nombre)
 );
+
+CREATE TABLE Carpetas_Compartidas (
+    Nombre VARCHAR(500) NOT NULL,
+    Ruta VARCHAR(45),
+    Descripción VARCHAR(500),
+    PRIMARY KEY (Nombre)
+);
+
+CREATE TABLE Carpetas_Compartidas (
+    Nombre VARCHAR(500) NOT NULL,
+    Usuario VARCHAR(45),
+    Tipo_Acceso VARCHAR(45),
+    Permisos VARCHAR(500),
+);
+
+CREATE TABLE Usuarios_Carpetas_Compartidas (
+    Nombre_Usuario VARCHAR(500) NOT NULL,
+    IP_Usuario VARCHAR(45)
+);
