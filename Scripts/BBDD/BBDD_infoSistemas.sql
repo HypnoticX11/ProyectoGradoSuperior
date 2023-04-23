@@ -120,8 +120,8 @@ CREATE TABLE Zonas_DNS (
     PRIMARY KEY (Nombre_Zona)
 );
 
-CREATE TABLE b (
-    NOmbre_Host VARCHAR(45),
+CREATE TABLE Registros_Zonas_DNS (
+    Nombre_Host VARCHAR(500),
     Tipo VARCHAR(45),
     Fecha VARCHAR(45),
     TTL VARCHAR(45)
