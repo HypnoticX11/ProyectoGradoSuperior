@@ -16,7 +16,7 @@ Conect_database
 
 $Impresoras = Get-Printer -ComputerName 192.168.1.2
 foreach ($Impresora in $Impresoras){
-    $Trabajos = Get-Printjob -ComputerName 192.168.1.2 -PrinterName $Impresora.ComputerName
+    $Trabajos = Get-Printjob -ComputerName 192.168.1.2 -PrinterName $Impresora.Name
     foreach ($Trabajo in $Trabajos){
         $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
         $sql.Connection = $Connection

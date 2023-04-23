@@ -1,8 +1,8 @@
-DROP DATABASE if EXISTS BBDD_infoSistemas;
+DROP DATABASE if EXISTS BBDD_infoSistems;
 -- Creamos la base de datos
-CREATE DATABASE BBDD_infoSistemas;
+CREATE DATABASE BBDD_infoSistems;
 -- Nos colocamos sobre ella
-USE BBDD_infoSistemas;
+USE BBDD_infoSistems;
 
 CREATE TABLE Equipos_Encendidos (
     IP VARCHAR(20) NOT NULL,
@@ -14,14 +14,13 @@ CREATE TABLE Equipos_Encendidos (
 
 CREATE TABLE Drivers_Impresoras (
     Nombre VARCHAR(500) NOT NULL,
-    Entorno_Impresion VARCHAR(45),
+    Entorno VARCHAR(45),
     Version_Driver VARCHAR(45),
-    Fabricante VARCHAR(500),
-    PRIMARY KEY (Nombre)
+    Fabricante VARCHAR(500)
 );
 
 CREATE TABLE Puertos_Impresoras (
-    ID int auto_increment
+    ID int auto_increment,
     Nombre VARCHAR(500) NOT NULL,
     Nombre_Equipo VARCHAR(45),
     Descripción VARCHAR(45),
@@ -47,5 +46,5 @@ CREATE TABLE Impresoras (
     Puerto VARCHAR(500),
     Compartida VARCHAR(45),
     Publicada VARCHAR(45),
-    PRIMARY KEY (IP),
+    PRIMARY KEY (Nombre)
 );
