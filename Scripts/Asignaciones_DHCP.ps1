@@ -16,11 +16,11 @@ Conect_database
 
 $Ambitos = Get-DHCPServerv4Scope -ComputerName 192.168.1.2
 foreach ($Ambito in $Ambitos) {
-    $Asignaciones = Get-DHCPServerv4Lease - -ComputerName 192.168.1.2 -ScopeId $Ambito.ScopeId
+    $Asignaciones = Get-DHCPServerv4Lease -ComputerName 192.168.1.2 -ScopeId $Ambito.ScopeId
     foreach ($Asignacion in $Asignaciones) {
         $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
         $sql.Connection = $Connection
-        $sql.CommandText = 'INSERT INTO IP_Asignadas VALUES (' + "'" + $Ambito.ScopeId + "'," + "'" + $Asignacion.IPAddress + "'," + "'" + $Asignacion.ClientId + "'" + "'" + $Asignacion.HostName + "'," + "'" + $Asignacion.AddressState + "'" + ');'
+        $sql.CommandText = 'INSERT INTO IP_Asignadas VALUES (' + "'" + $Ambito.ScopeId + "'," + "'" + $Asignacion.IPAddress + "'," + "'" + $Asignacion.ClientId + "'," + "'" + $Asignacion.HostName + "'," + "'" + $Asignacion.AddressState + "'" + ');'
         $sql.ExecuteNonQuery() | Out-Null
     }
 }

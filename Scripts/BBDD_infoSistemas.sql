@@ -79,12 +79,12 @@ CREATE TABLE Ambitos (
 );
 
 CREATE TABLE Opciones_Ambitos (
-    ID_OPCIÓN VARCHAR(500) NOT NULL,
+    ID_OPCION VARCHAR(500) NOT NULL,
     ID_Ambito VARCHAR(45),
     NOMBRE VARCHAR(45),
     Tipo VARCHAR(45),
     Valor VARCHAR(500),
-    PRIMARY KEY (ID)
+    PRIMARY KEY (OPCION)
 );
 
 CREATE TABLE Reservas_Ambitos (
@@ -94,7 +94,7 @@ CREATE TABLE Reservas_Ambitos (
     Nombre VARCHAR(45),
     Tipo VARCHAR(500),
     Descripcion VARCHAR(500),
-    PRIMARY KEY (ID)
+    PRIMARY KEY (IP)
 );
 
 CREATE TABLE Estadísticas_Ambitos (
