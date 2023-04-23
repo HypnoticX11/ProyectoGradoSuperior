@@ -112,3 +112,17 @@ CREATE TABLE IP_Asignadas (
     Estado VARCHAR(45),
     PRIMARY KEY (IP_Cliente)
 );
+
+CREATE TABLE Zonas_DNS (
+    Nombre_Zona VARCHAR(45),
+    Tipo VARCHAR(45),
+    Firmada VARCHAR(45),
+    PRIMARY KEY (Nombre_Zona)
+);
+
+CREATE TABLE b (
+    NOmbre_Host VARCHAR(45),
+    Tipo VARCHAR(45),
+    Fecha VARCHAR(45),
+    TTL VARCHAR(45)
+);
