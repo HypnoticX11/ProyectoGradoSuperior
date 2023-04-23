@@ -21,11 +21,12 @@ CREATE TABLE Drivers_Impresoras (
 );
 
 CREATE TABLE Puertos_Impresoras (
+    ID int auto_increment
     Nombre VARCHAR(500) NOT NULL,
     Nombre_Equipo VARCHAR(45),
     Descripción VARCHAR(45),
     Tipo_monitor VARCHAR(500),
-    PRIMARY KEY (Nombre)
+    PRIMARY KEY (ID)
 );
 
 CREATE TABLE Cola_Impresión (

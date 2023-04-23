@@ -27,7 +27,7 @@ $Puertos = Get-PrinterPort -ComputerName 192.168.1.2
 foreach ($Puerto in $Puertos){
     $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
     $sql.Connection = $Connection
-    $sql.CommandText = 'INSERT INTO Puertos_Impresoras VALUES (' + "'" + $Puerto.Name + "'," + "'" + $Puerto.ComputerName + "'," + "'" + $Puerto.Description + "'," + "'" + $Puerto.PortMonitor + "'" + ');'
+    $sql.CommandText = 'INSERT INTO Puertos_Impresoras (Nombre,Nombre_Equipo,Descripción,Tipo_monitor) VALUES (' + "'" + $Puerto.Name + "'," + "'" + $Puerto.ComputerName + "'," + "'" + $Puerto.Description + "'," + "'" + $Puerto.PortMonitor + "'" + ');'
     $sql.ExecuteNonQuery() | Out-Null
 }
 
@@ -39,12 +39,15 @@ foreach ($Driver in $Drivers){
     $sql.ExecuteNonQuery() | Out-Null
 }
 
-$Trabajos = Get-Pritjob -ComputerName 192.168.1.2
-foreach ($Trabajo in $Trabajos){
-    $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
-    $sql.Connection = $Connection
-    $sql.CommandText = 'INSERT INTO Puertos_Impresoras VALUES (' + "'" + $Trabajo.Id + "'," + "'" + $Trabajo.ComputerName + "'," + "'" + $Trabajo.PrinterName + "'," + "'" + $Trabajo.DocumentName + "'," + "'" + $Trabajo.SubmittedTime + "'," + "'" + $Trabajo.JobStatus + "'" + ');'
-    $sql.ExecuteNonQuery() | Out-Null
+foreach ($Impresora in $Impresoras){
+    $Trabajos = Get-Printjob -ComputerName 192.168.1.2 -PrinterName $Impresora.ComputerName
+    foreach ($Trabajo in $Trabajos){
+        $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
+        $sql.Connection = $Connection
+        $sql.CommandText = 'INSERT INTO Puertos_Impresoras VALUES (' + "'" + $Trabajo.Id + "'," + "'" + $Trabajo.ComputerName + "'," + "'" + $Trabajo.PrinterName + "'," + "'" + $Trabajo.DocumentName + "'," + "'" + $Trabajo.SubmittedTime + "'," + "'" + $Trabajo.JobStatus + "'" + ');'
+        $sql.ExecuteNonQuery() | Out-Null
+    }
 }
+
 
 $Connection.Close()
