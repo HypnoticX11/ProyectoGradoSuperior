@@ -17,6 +17,12 @@ Conect_database
 
 $Carpetas = Get-SmbShare
 foreach ($Carpeta in $Carpetas){
+
+    if ($Carpeta.Path[-1] -eq "\") {
+        # Si la última letra es un signo de exclamación, eliminarlo
+        $Carpeta.Path = $Carpeta.Path.Substring(0, $Carpeta.Path.Length - 1)
+    }
+
     $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
     $sql.Connection = $Connection
     $sql.CommandText = 'INSERT INTO Carpetas_Compartidas VALUES (' + "'" + $Carpeta.Name + "'," + "'" + $Carpeta.Path + "'," + "'" + $Carpeta.Description + "'" + ');'
