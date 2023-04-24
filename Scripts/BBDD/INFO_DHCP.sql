@@ -20,7 +20,7 @@ CREATE TABLE Opciones_Ambitos (
     NOMBRE VARCHAR(45),
     Tipo VARCHAR(45),
     Valor VARCHAR(500),
-    PRIMARY KEY (OPCION)
+    PRIMARY KEY (ID_OPCION)
 );
 
 CREATE TABLE Reservas_Ambitos (
