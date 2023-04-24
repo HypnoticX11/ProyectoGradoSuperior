@@ -2,7 +2,7 @@ DROP PROCEDURE IF EXISTS Log_Asignaciones_DHCP;
 -- Cambiamos el delimitador por "$$" 
 DELIMITER $$
 -- Creamos un procedimiento al que le pasamos un parámetro float
-CREATE PROCEDURE Borrado_Tablas()
+CREATE PROCEDURE Borrado_Tablas
 
 -- Iniciamos el procedimiento
 BEGIN
