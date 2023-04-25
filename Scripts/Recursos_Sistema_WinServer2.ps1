@@ -14,7 +14,7 @@ function Conect_database {
 
 Conect_database
 
-$IP = "192.168.1.2"
+$IP = "192.168.1.3"
 
 $Disco = Get-WmiObject -Class Win32_LogicalDisk | Where-Object {$_.DeviceID -eq "C:"} | Select-Object -Property DeviceID, @{Name="Capacity";Expression={"{0:N2}" -f($_.Size/1GB)}}, @{Name="FreeSpace";Expression={"{0:N2}" -F($_.FreeSpace/1GB)}}
 $Capacidad_Disco = $Disco.Capacity

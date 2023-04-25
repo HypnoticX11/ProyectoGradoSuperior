@@ -12,12 +12,12 @@ CREATE TABLE Equipos_Encendidos (
     PRIMARY KEY (IP)
 );
 
-CREATE TABLE Equipos_Encendidos (
+CREATE TABLE Datos_Equipos (
     IP VARCHAR(20) NOT NULL,
     Capacidad_Disco FLOAT,
     Espacio_Usado_Disco FLOAT,
     Porcentaje_Uso_CPU FLOAT,
     RAM_Total FLOAT,
-    RAM_Uso FLOAT
+    RAM_Uso FLOAT,
     PRIMARY KEY (IP)
 );
