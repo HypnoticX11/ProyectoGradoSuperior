@@ -15,6 +15,11 @@ function Conect_database {
 
 Conect_database
 
+$sql = New-Object MySql.Data.MySqlClient.MySqlCommand
+$sql.Connection = $Connection
+$sql.CommandText = 'INFO_IMPRESORAS.Log_Impresion()'
+$sql.ExecuteNonQuery() | Out-Null
+
 $Puertos = Get-PrinterPort -ComputerName 192.168.1.2
 foreach ($Puerto in $Puertos){
     $sql = New-Object MySql.Data.MySqlClient.MySqlCommand

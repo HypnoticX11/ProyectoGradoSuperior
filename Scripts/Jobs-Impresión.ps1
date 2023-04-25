@@ -14,6 +14,11 @@ function Conect_database {
 
 Conect_database
 
+$sql = New-Object MySql.Data.MySqlClient.MySqlCommand
+$sql.Connection = $Connection
+$sql.CommandText = 'INFO_IMPRESORAS.Log_jobs_Impresion()'
+$sql.ExecuteNonQuery() | Out-Null
+
 $Impresoras = Get-Printer -ComputerName 192.168.1.2
 foreach ($Impresora in $Impresoras){
     $Trabajos = Get-Printjob -ComputerName 192.168.1.2 -PrinterName $Impresora.Name
