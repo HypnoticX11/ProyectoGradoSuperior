@@ -14,5 +14,22 @@ Ver espacio libre en Disco:
 
 
 
+Con PowerShell, se pueden monitorizar muchos aspectos de Active Directory (AD), algunos ejemplos son:
+
+Usuarios y grupos: se pueden crear, eliminar y modificar usuarios y grupos en Active Directory, y se puede obtener información como la fecha de creación, última modificación, estado de la cuenta, etc.
+
+Equipos: se pueden administrar los equipos que se unen al dominio de Active Directory, obtener información como el sistema operativo, la fecha de última conexión, el modelo de hardware, etc.
+
+Políticas de grupo: se pueden administrar las políticas de grupo, como la creación y modificación de directivas, el análisis y el informe de las directivas de grupo aplicadas a un usuario o equipo específico.
+
+Servicios de dominio: se pueden monitorear y administrar los servicios de dominio, como la replicación, la resolución de nombres, la autenticación, etc.
+
+Certificados: se pueden administrar los certificados en Active Directory, como la emisión y revocación de certificados, y la gestión de la infraestructura de clave pública (PKI).
+
+Estos son solo algunos ejemplos de lo que se puede monitorizar en Active Directory con PowerShell. Hay muchas otras áreas que se pueden monitorear y administrar con esta herramienta, lo que hace que sea una herramienta muy útil para los administradores de sistemas y de redes que trabajan con Active Directory.
+
+
+
+
 
 

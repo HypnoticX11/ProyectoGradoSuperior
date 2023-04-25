@@ -22,8 +22,6 @@ p3rjWmsL83921./*
 
 iDRAC
 
-10.10.25.222
-
 root
 
 p3rjWmsL83921idrac

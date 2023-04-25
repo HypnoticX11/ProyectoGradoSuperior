@@ -14,21 +14,6 @@ BEGIN
     EXECUTE statement;
     TRUNCATE TABLE IP_Asignadas;
 
-    SET @RUTA = concat("SELECT * FROM IP_Asignadas INTO OUTFILE '/otp/lampp/mysql/logs_Servicios/",DATE_FORMAT(NOW(),'_%Y_%m_%d_%H_%i_%s'), '.txt ', "' FIELDS TERMINATED BY ','");
-    PREPARE statement FROM @RUTA;
-    EXECUTE statement;
-    TRUNCATE TABLE IP_Asignadas;
-
-    SET @RUTA = concat("SELECT * FROM IP_Asignadas INTO OUTFILE '/otp/lampp/mysql/logs_Servicios/",DATE_FORMAT(NOW(),'_%Y_%m_%d_%H_%i_%s'), '.txt ', "' FIELDS TERMINATED BY ','");
-    PREPARE statement FROM @RUTA;
-    EXECUTE statement;
-    TRUNCATE TABLE IP_Asignadas;
-
-    SET @RUTA = concat("SELECT * FROM IP_Asignadas INTO OUTFILE '/otp/lampp/mysql/logs_Servicios/",DATE_FORMAT(NOW(),'_%Y_%m_%d_%H_%i_%s'), '.txt ', "' FIELDS TERMINATED BY ','");
-    PREPARE statement FROM @RUTA;
-    EXECUTE statement;
-    TRUNCATE TABLE IP_Asignadas;
-
 END$$
 
 delimiter ;
