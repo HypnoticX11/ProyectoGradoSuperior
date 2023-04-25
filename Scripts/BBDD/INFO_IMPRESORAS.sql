@@ -10,6 +10,7 @@ CREATE TABLE Drivers_Impresoras (
     Version_Driver VARCHAR(45),
     Fabricante VARCHAR(500)
 );
+CREATE INDEX ID_DRIVERS_IMPRESORAS ON Drivers_Impresoras(Nombre);
 
 CREATE TABLE Puertos_Impresoras (
     ID int auto_increment,
@@ -19,6 +20,7 @@ CREATE TABLE Puertos_Impresoras (
     Tipo_monitor VARCHAR(500),
     PRIMARY KEY (ID)
 );
+CREATE INDEX ID_PUERTOS_IMPRESORAS ON Puertos_Impresoras(Nombre);
 
 CREATE TABLE Cola_Impresión (
     ID VARCHAR(500) NOT NULL,
@@ -29,6 +31,7 @@ CREATE TABLE Cola_Impresión (
     Estado VARCHAR(500),
     PRIMARY KEY (ID)
 );
+CREATE INDEX ID_COLA_IMPRESORAS ON Cola_Impresión(Nombre_Impresora);
 
 CREATE TABLE Impresoras (
     Nombre VARCHAR(500) NOT NULL,
@@ -38,5 +41,8 @@ CREATE TABLE Impresoras (
     Puerto VARCHAR(500),
     Compartida VARCHAR(45),
     Publicada VARCHAR(45),
-    PRIMARY KEY (Nombre)
+    PRIMARY KEY (Nombre),
+    CONSTRAINT FK_drivers_Impresoras FOREIGN KEY (Driver) REFERENCES Drivers_Impresoras (Nombre) ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT FK_Ambitos_Opciones_Ambitos FOREIGN KEY (Puerto) REFERENCES Puertos_Impresoras (Nombre) ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT FK_Cola_Impresora FOREIGN KEY (Nombre) REFERENCES Cola_Impresión (Nombre_Impresora) ON DELETE RESTRICT ON UPDATE CASCADE,
 );
