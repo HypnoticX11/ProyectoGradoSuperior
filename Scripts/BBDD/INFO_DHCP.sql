@@ -12,6 +12,7 @@ CREATE TABLE Opciones_Ambitos (
     Valor VARCHAR(500),
     PRIMARY KEY (ID_OPCION)
 );
+ALTER TABLE 'Opciones_Ambitos' ADD INDEX('ID_Ambito');
 
 CREATE TABLE Reservas_Ambitos (
     IP VARCHAR(500) NOT NULL,
@@ -22,6 +23,7 @@ CREATE TABLE Reservas_Ambitos (
     Descripcion VARCHAR(500),
     PRIMARY KEY (IP)
 );
+ALTER TABLE 'Reservas_Ambitos' ADD INDEX('ID_Ambito');
 
 CREATE TABLE Estadísticas_Ambitos (
     ID_Ambito VARCHAR(500),
@@ -29,6 +31,7 @@ CREATE TABLE Estadísticas_Ambitos (
     IP_Uso VARCHAR(45),
     Reservadas VARCHAR(45)
 );
+ALTER TABLE 'Estadísticas_Ambitos' ADD INDEX('ID_Ambito');
 
 CREATE TABLE Ambitos (
     ID VARCHAR(500) NOT NULL,
