@@ -22,17 +22,6 @@ CREATE TABLE Puertos_Impresoras (
 );
 CREATE INDEX ID_PUERTOS_IMPRESORAS ON Puertos_Impresoras(Nombre);
 
-CREATE TABLE Cola_Impresión (
-    ID VARCHAR(500) NOT NULL,
-    Nombre_Equipo VARCHAR(45),
-    Nombre_Impresora VARCHAR(45),
-    Nombre_Documento VARCHAR(500),
-    Fecha VARCHAR(500),
-    Estado VARCHAR(500),
-    PRIMARY KEY (ID)
-);
-CREATE INDEX ID_COLA_IMPRESORAS ON Cola_Impresión(Nombre_Impresora);
-
 CREATE TABLE Impresoras (
     Nombre VARCHAR(500) NOT NULL,
     NOMBRE_Equipo VARCHAR(45),
@@ -43,6 +32,17 @@ CREATE TABLE Impresoras (
     Publicada VARCHAR(45),
     PRIMARY KEY (Nombre),
     CONSTRAINT FK_drivers_Impresoras FOREIGN KEY (Driver) REFERENCES Drivers_Impresoras (Nombre),
-    CONSTRAINT FK_Ambitos_Opciones_Ambitos FOREIGN KEY (Puerto) REFERENCES Puertos_Impresoras (Nombre),
-    CONSTRAINT FK_Cola_Impresora FOREIGN KEY (Nombre) REFERENCES Cola_Impresión (Nombre_Impresora)
+    CONSTRAINT FK_Ambitos_Opciones_Ambitos FOREIGN KEY (Puerto) REFERENCES Puertos_Impresoras (Nombre)
+);
+CREATE INDEX ID_COLA_IMPRESORAS ON Impresoras(Nombre);
+
+CREATE TABLE Cola_Impresión (
+    ID VARCHAR(500) NOT NULL,
+    Nombre_Equipo VARCHAR(45),
+    Nombre_Impresora VARCHAR(45),
+    Nombre_Documento VARCHAR(500),
+    Fecha VARCHAR(500),
+    Estado VARCHAR(500),
+    PRIMARY KEY (ID),
+    CONSTRAINT FK_Cola_Impresora FOREIGN KEY (Nombre_Impresora) REFERENCES Impresoras (Nombre)
 );

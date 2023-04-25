@@ -35,7 +35,7 @@ $Drivers = Get-PrinterDriver -ComputerName 192.168.1.2
 foreach ($Driver in $Drivers){
     $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
     $sql.Connection = $Connection
-    $sql.CommandText = 'INSERT INTO Puertos_Impresoras (Nombre,Entorno,Version_Driver,Fabricante) VALUES (' + "'" + $Driver.Name + "'," + "'" + $Driver.PrinterEnvironment + "'," + "'" + $Driver.MajorVersion + "'," + "'" + $Driver.Manufacturer + "'" + ');'
+    $sql.CommandText = 'INSERT INTO Drivers_Impresoras (Nombre,Entorno,Version_Driver,Fabricante) VALUES (' + "'" + $Driver.Name + "'," + "'" + $Driver.PrinterEnvironment + "'," + "'" + $Driver.MajorVersion + "'," + "'" + $Driver.Manufacturer + "'" + ');'
     $sql.ExecuteNonQuery() | Out-Null
 }
 
