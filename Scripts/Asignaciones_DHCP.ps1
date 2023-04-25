@@ -15,9 +15,9 @@ function Conect_database {
 Conect_database
 
 $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
-        $sql.Connection = $Connection
-        $sql.CommandText = 'Borrado_Tablas()'
-        $sql.ExecuteNonQuery() | Out-Null
+$sql.Connection = $Connection
+$sql.CommandText = 'Borrado_Tablas()'
+$sql.ExecuteNonQuery() | Out-Null
 
 $Ambitos = Get-DHCPServerv4Scope -ComputerName 192.168.1.2
 foreach ($Ambito in $Ambitos) {
