@@ -13,7 +13,7 @@ CREATE TABLE Usuarios_AD (
 
 CREATE TABLE Grupos_AD (
     Nombre_Distinguido VARCHAR(500) NOT NULL,
-    Nombre VARCHAR(45),
+    Nombre VARCHAR(200),
     Categoria VARCHAR(45),
     Alcance VARCHAR(500),
     PRIMARY KEY (Nombre_Distinguido)
