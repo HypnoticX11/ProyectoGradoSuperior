@@ -29,7 +29,8 @@ CREATE TABLE Cola_Impresión (
     Nombre_Documento VARCHAR(500),
     Fecha VARCHAR(500),
     Estado VARCHAR(500),
-    PRIMARY KEY (ID)
+    PRIMARY KEY (ID),
+    CONSTRAINT FK_Cola_Impresora FOREIGN KEY (Nombre_Impresora) REFERENCES Impresoras (Nombre)
 );
 CREATE INDEX ID_COLA_IMPRESORAS ON Cola_Impresión(Nombre_Equipo);
 
@@ -43,6 +44,5 @@ CREATE TABLE Impresoras (
     Publicada VARCHAR(45),
     PRIMARY KEY (Nombre),
     CONSTRAINT FK_drivers_Impresoras FOREIGN KEY (Driver) REFERENCES Drivers_Impresoras (Nombre),
-    CONSTRAINT FK_Ambitos_Opciones_Ambitos FOREIGN KEY (Puerto) REFERENCES Puertos_Impresoras (Nombre),
-    CONSTRAINT FK_Cola_Impresora FOREIGN KEY (Nombre) REFERENCES Cola_Impresión (Nombre_Equipo)
+    CONSTRAINT FK_Ambitos_Opciones_Ambitos FOREIGN KEY (Puerto) REFERENCES Puertos_Impresoras (Nombre)
 );
