@@ -1,8 +1,8 @@
-DROP DATABASE if EXISTS INFO_EQUIPOS;
+DROP DATABASE if EXISTS INFO_IMPRESORAS;
 -- Creamos la base de datos
-CREATE DATABASE INFO_EQUIPOS;
+CREATE DATABASE INFO_IMPRESORAS;
 -- Nos colocamos sobre ella
-USE INFO_EQUIPOS;
+USE INFO_IMPRESORAS;
 
 CREATE TABLE Drivers_Impresoras (
     Nombre VARCHAR(500) NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE Impresoras (
     Compartida VARCHAR(45),
     Publicada VARCHAR(45),
     PRIMARY KEY (Nombre),
-    CONSTRAINT FK_drivers_Impresoras FOREIGN KEY (Driver) REFERENCES Drivers_Impresoras (Nombre) ON DELETE RESTRICT ON UPDATE CASCADE,
-    CONSTRAINT FK_Ambitos_Opciones_Ambitos FOREIGN KEY (Puerto) REFERENCES Puertos_Impresoras (Nombre) ON DELETE RESTRICT ON UPDATE CASCADE,
-    CONSTRAINT FK_Cola_Impresora FOREIGN KEY (Nombre) REFERENCES Cola_Impresión (Nombre_Impresora) ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT FK_drivers_Impresoras FOREIGN KEY (Driver) REFERENCES Drivers_Impresoras (Nombre),
+    CONSTRAINT FK_Ambitos_Opciones_Ambitos FOREIGN KEY (Puerto) REFERENCES Puertos_Impresoras (Nombre),
+    CONSTRAINT FK_Cola_Impresora FOREIGN KEY (Nombre) REFERENCES Cola_Impresión (Nombre_Impresora)
 );
