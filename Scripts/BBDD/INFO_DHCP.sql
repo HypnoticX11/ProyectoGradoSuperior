@@ -12,7 +12,6 @@ CREATE TABLE Opciones_Ambitos (
     Valor VARCHAR(500),
     PRIMARY KEY (ID_OPCION)
 );
-CREATE INDEX ID_OPCIONES_AMBITOS ON Opciones_Ambito(ID_Ambito);
 
 CREATE TABLE Reservas_Ambitos (
     IP VARCHAR(500) NOT NULL,
@@ -23,7 +22,6 @@ CREATE TABLE Reservas_Ambitos (
     Descripcion VARCHAR(500),
     PRIMARY KEY (IP)
 );
-CREATE INDEX ID_RESERVAS_AMBITOS ON Reservas_Ambitos(ID_Ambito);
 
 CREATE TABLE Estadísticas_Ambitos (
     ID_Ambito VARCHAR(500),
@@ -31,7 +29,6 @@ CREATE TABLE Estadísticas_Ambitos (
     IP_Uso VARCHAR(45),
     Reservadas VARCHAR(45)
 );
-CREATE INDEX ID_ESTADISTICAS_AMBITOS ON Estadísticas_Ambitos(ID_Ambito);
 
 CREATE TABLE Ambitos (
     ID VARCHAR(500) NOT NULL,
@@ -40,10 +37,7 @@ CREATE TABLE Ambitos (
     IP_Inicio VARCHAR(500),
     IP_Final VARCHAR(500),
     Tiempo_Concesión VARCHAR(45),
-    PRIMARY KEY (ID),
-    CONSTRAINT FK_Ambitos_Opciones_Ambitos FOREIGN KEY (ID) REFERENCES Opciones_Ambitos (ID_Ambito) ON DELETE RESTRICT ON UPDATE CASCADE,
-    CONSTRAINT FK_Ambitos_Reservas_Ambitos FOREIGN KEY (ID) REFERENCES Reservas_Ambitos (ID_Ambito) ON DELETE RESTRICT ON UPDATE CASCADE,
-    CONSTRAINT FK_Ambitos_Estadísticas_Ambitos FOREIGN KEY (ID) REFERENCES Estadísticas_Ambitos (ID_Ambito) ON DELETE RESTRICT ON UPDATE CASCADE
+    PRIMARY KEY (ID)
 );
 
 CREATE TABLE IP_Asignadas (
