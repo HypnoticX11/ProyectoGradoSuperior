@@ -20,7 +20,7 @@ foreach ($Impresora in $Impresoras){
     foreach ($Trabajo in $Trabajos){
         $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
         $sql.Connection = $Connection
-        $sql.CommandText = 'INSERT INTO Puertos_Impresoras VALUES (' + "'" + $Trabajo.Id + "'," + "'" + $Trabajo.ComputerName + "'," + "'" + $Trabajo.PrinterName + "'," + "'" + $Trabajo.DocumentName + "'," + "'" + $Trabajo.SubmittedTime + "'," + "'" + $Trabajo.JobStatus + "'" + ');'
+        $sql.CommandText = 'INSERT INTO Cola_Impresión VALUES (' + "'" + $Trabajo.Id + "'," + "'" + $Trabajo.ComputerName + "'," + "'" + $Trabajo.PrinterName + "'," + "'" + $Trabajo.DocumentName + "'," + "'" + $Trabajo.SubmittedTime + "'," + "'" + $Trabajo.JobStatus + "'" + ');'
         $sql.ExecuteNonQuery() | Out-Null
     }
 }

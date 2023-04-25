@@ -15,14 +15,6 @@ function Conect_database {
 
 Conect_database
 
-$Impresoras = Get-Printer -ComputerName 192.168.1.2
-foreach ($Impresora in $Impresoras){
-    $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
-    $sql.Connection = $Connection
-    $sql.CommandText = 'INSERT INTO Impresoras VALUES (' + "'" + $Impresora.Name + "'," + "'" + $Impresora.ComputerName + "'," + "'" + $Impresora.Type + "'," + "'" + $Impresora.DriverName + "','" + $Impresora.PortName + "','" + $Impresora.Shared + "','" + $Impresora.Published + "'" + ');'
-    $sql.ExecuteNonQuery() | Out-Null
-}
-
 $Puertos = Get-PrinterPort -ComputerName 192.168.1.2
 foreach ($Puerto in $Puertos){
     $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
@@ -39,5 +31,12 @@ foreach ($Driver in $Drivers){
     $sql.ExecuteNonQuery() | Out-Null
 }
 
+$Impresoras = Get-Printer -ComputerName 192.168.1.2
+foreach ($Impresora in $Impresoras){
+    $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
+    $sql.Connection = $Connection
+    $sql.CommandText = 'INSERT INTO Impresoras VALUES (' + "'" + $Impresora.Name + "'," + "'" + $Impresora.ComputerName + "'," + "'" + $Impresora.Type + "'," + "'" + $Impresora.DriverName + "','" + $Impresora.PortName + "','" + $Impresora.Shared + "','" + $Impresora.Published + "'" + ');'
+    $sql.ExecuteNonQuery() | Out-Null
+}
 
 $Connection.Close()
