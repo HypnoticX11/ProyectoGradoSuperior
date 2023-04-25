@@ -1,8 +1,8 @@
-DROP PROCEDURE IF EXISTS Log_Asignaciones_DHCP;
+DROP PROCEDURE IF EXISTS INFO_DHCP.Log_DHCP;
 -- Cambiamos el delimitador por "$$" 
 DELIMITER $$
 -- Creamos un procedimiento al que le pasamos un parámetro float
-CREATE PROCEDURE Log_Asignaciones_DHCP()
+CREATE PROCEDURE INFO_DHCP.Log_DHCP()
 
 -- Iniciamos el procedimiento
 BEGIN
