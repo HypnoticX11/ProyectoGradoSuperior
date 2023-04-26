@@ -9,10 +9,25 @@ BEGIN
     -- Declaramos las variables Que necesitamos
     Declare Ruta varchar(100);
 
-    SET @RUTA = concat("SELECT * FROM IP_Asignadas INTO OUTFILE '/otp/lampp/mysql/logs_Servicios/",DATE_FORMAT(NOW(),'_%Y_%m_%d_%H_%i_%s'), '.txt ', "' FIELDS TERMINATED BY ','");
+    SET @RUTA = concat("SELECT * FROM IP_Asignadas INTO OUTFILE '/opt/lampp/mysql/DHCP/logs_Opciones_Ambitos",DATE_FORMAT(NOW(),'_%Y_%m_%d_%H_%i_%s'), '.csv', "' FIELDS TERMINATED BY ','");
     PREPARE statement FROM @RUTA;
     EXECUTE statement;
-    TRUNCATE TABLE IP_Asignadas;
+    TRUNCATE TABLE Opciones_Ambitos;
+
+    SET @RUTA = concat("SELECT * FROM IP_Asignadas INTO OUTFILE '/opt/lampp/mysql/DHCP/logs_Reservas_Ambitos",DATE_FORMAT(NOW(),'_%Y_%m_%d_%H_%i_%s'), '.csv', "' FIELDS TERMINATED BY ','");
+    PREPARE statement FROM @RUTA;
+    EXECUTE statement;
+    TRUNCATE TABLE Reservas_Ambitos;
+
+    SET @RUTA = concat("SELECT * FROM IP_Asignadas INTO OUTFILE '/opt/lampp/mysql/DHCP/Estadísticas_Ambitos",DATE_FORMAT(NOW(),'_%Y_%m_%d_%H_%i_%s'), '.csv', "' FIELDS TERMINATED BY ','");
+    PREPARE statement FROM @RUTA;
+    EXECUTE statement;
+    TRUNCATE TABLE Estadísticas_Ambitos;
+
+    SET @RUTA = concat("SELECT * FROM IP_Asignadas INTO OUTFILE '/opt/lampp/mysql/DHCP/logs_Ambitos",DATE_FORMAT(NOW(),'_%Y_%m_%d_%H_%i_%s'), '.csv', "' FIELDS TERMINATED BY ','");
+    PREPARE statement FROM @RUTA;
+    EXECUTE statement;
+    TRUNCATE TABLE Ambitos;
 
 END$$
 
