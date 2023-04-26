@@ -9,7 +9,7 @@ BEGIN
     -- Declaramos las variables Que necesitamos
     Declare Ruta varchar(100);
 
-    SET @RUTA = concat("SELECT * FROM Cola_Impresión INTO OUTFILE '/opt/lampp/mysql/logs_Servicios/Sistemas/Log_Equipos_Encendidos",DATE_FORMAT(NOW(),'_%Y_%m_%d_%H_%i_%s'), '.csv', "' FIELDS TERMINATED BY ','");
+    SET @RUTA = concat("SELECT * FROM Equipos_Encendidos INTO OUTFILE '/opt/lampp/mysql/logs_Servicios/Sistemas/Log_Equipos_Encendidos",DATE_FORMAT(NOW(),'_%Y_%m_%d_%H_%i_%s'), '.csv', "' FIELDS TERMINATED BY ','");
     PREPARE statement FROM @RUTA;
     EXECUTE statement;
     TRUNCATE TABLE Equipos_Encendidos;

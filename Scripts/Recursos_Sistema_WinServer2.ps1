@@ -29,7 +29,7 @@ $RAM_Uso = Get-CimInstance -ClassName Win32_OperatingSystem | Select-Object Tota
 
 $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
 $sql.Connection = $Connection
-$sql.CommandText = 'INSERT INTO Datos_Equipos VALUES (' + "'" + $IP + "'," + $Capacidad_Disco + "," + $Espacio_Usado_Disco + ","  + $Porcentaje_Uso_CPU + "," + $RAM_Total + "," + $RAM_Uso.ToString("F2") + ');'
+$sql.CommandText = 'INSERT INTO Datos_Equipos VALUES (' + "'" + $IP + "','" + $Capacidad_Disco + "','" + $Espacio_Usado_Disco + "','"  + $Porcentaje_Uso_CPU + "','" + $RAM_Total + "','" + $RAM_Uso.ToString("F2") + "'" + ');'
 $sql.ExecuteNonQuery() | Out-Null
 
 $Connection.Close()

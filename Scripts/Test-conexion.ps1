@@ -13,6 +13,8 @@ function Conect_database {
     $Connection.Open()
 }
 
+Conect_database
+
 $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
 $sql.Connection = $Connection
 $sql.CommandText = 'Log_Test_Conexion()'
@@ -21,7 +23,7 @@ $sql.ExecuteNonQuery() | Out-Null
 #COMPROBAR SI LOS SERVIDORES EST�N ENCENDIDOS
 $tests = 2
 $IP = "192.168.1."
-Conect_database
+
 While ($tests -ne 10){
     $PC = $IP + $tests
     $Encendido = Test-Connection $PC -Count 1 -Quiet
@@ -33,8 +35,8 @@ While ($tests -ne 10){
             $SO = Get-WmiObject -Class Win32_OperatingSystem -ComputerName $PC | Select-Object Caption
         }
         catch {
-            $username = "root"
-            $password = ConvertTo-SecureString "Pollo135790" -AsPlainText -Force
+            $username = "dirgo"
+            $password = ConvertTo-SecureString "Admin123." -AsPlainText -Force
             $cred = New-Object System.Management.Automation.PSCredential($username, $password)
 
             $value = $true
