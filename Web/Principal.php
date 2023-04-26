@@ -23,12 +23,18 @@
 
     <?php
       // Establecer conexión
-      $conn = mysqli_connect("192.168.1.1", "Proyecto", "Admin123.", "INFO_EQUIPOS");
+      $conn = mysqli_connect("192.168.1.4", "Proyecto", "Admin123.", "INFO_EQUIPOS");
 
       // Ejecutar consulta
       $sql = "SELECT * FROM Datos_Equipos";
       $resultado = mysqli_query($conn, $sql);
-      echo $resultado;
+
+      // Mostrar resultados
+      while ($fila = mysqli_fetch_assoc($resultado)) {
+        echo "IP: " . $fila["IP"] . "<br>";
+        echo "Uso_CPU: " . $fila["Espacio_Usado_Disco"] . "<br>";
+        echo "<br>";
+      }
 
       // Cerrar conexión
       mysqli_close($conn);
@@ -37,5 +43,3 @@
     <p class="CP">@Copyright Diego 2023</p>
   </body>
 </html>
-
-
