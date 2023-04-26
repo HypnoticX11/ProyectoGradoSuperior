@@ -6,13 +6,18 @@ function Conect_database {
     #Creamos un nuevo objeto con la conexi�n de MySql 
 	$global:Connection = New-Object MySql.Data.MySqlClient.MySqlConnection
     #Creamos el texto que nos permite conectarnos a la base de datos
-	$ConnectionString = "server=" + "192.168.1.4" + ";port=3306;uid=" + "Proyecto" + ";pwd=$passwd" + ";INFO_DNS"
+	$ConnectionString = "server=" + "192.168.1.4" + ";port=3306;uid=" + "Proyecto" + ";pwd=$passwd" + ";database=INFO_DNS"
 	$Connection.ConnectionString = $ConnectionString
 	#Abrimos la conexi�n
     $Connection.Open()
 }
 
 Conect_database
+
+$sql = New-Object MySql.Data.MySqlClient.MySqlCommand
+$sql.Connection = $Connection
+$sql.CommandText = 'Log_DNS()'
+$sql.ExecuteNonQuery() | Out-Null
 
 $Zonas = Get-DnsServerZone -ComputerName 192.168.1.3
 foreach ($Zona in $Zonas) {

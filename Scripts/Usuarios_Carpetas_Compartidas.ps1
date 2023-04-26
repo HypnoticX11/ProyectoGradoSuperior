@@ -6,13 +6,18 @@ function Conect_database {
     #Creamos un nuevo objeto con la conexi�n de MySql 
 	$global:Connection = New-Object MySql.Data.MySqlClient.MySqlConnection
     #Creamos el texto que nos permite conectarnos a la base de datos
-	$ConnectionString = "server=" + "192.168.1.4" + ";port=3306;uid=" + "Proyecto" + ";pwd=$passwd" + ";INFO_CARPETAS_COMPARTIDAS"
+	$ConnectionString = "server=" + "192.168.1.4" + ";port=3306;uid=" + "Proyecto" + ";pwd=$passwd" + ";database=INFO_CARPETAS_COMPARTIDAS"
 	$Connection.ConnectionString = $ConnectionString
 	#Abrimos la conexi�n
     $Connection.Open()
 }
 
 Conect_database
+
+$sql = New-Object MySql.Data.MySqlClient.MySqlCommand
+$sql.Connection = $Connection
+$sql.CommandText = 'Log_Usuarios_Carpetas_Compartidas()'
+$sql.ExecuteNonQuery() | Out-Null
 
 $Usuarios_Conectados = Get-SmbSession
 foreach ($Usuario in $Usuarios_Conectados) {

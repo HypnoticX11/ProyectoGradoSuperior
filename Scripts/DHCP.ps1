@@ -6,13 +6,18 @@ function Conect_database {
     #Creamos un nuevo objeto con la conexi�n de MySql 
 	$global:Connection = New-Object MySql.Data.MySqlClient.MySqlConnection
     #Creamos el texto que nos permite conectarnos a la base de datos
-	$ConnectionString = "server=" + "192.168.1.4" + ";port=3306;uid=" + "Proyecto" + ";pwd=$passwd" + ";INFO_DHCP"
+	$ConnectionString = "server=" + "192.168.1.4" + ";port=3306;uid=" + "Proyecto" + ";pwd=$passwd" + ";database=INFO_DHCP"
 	$Connection.ConnectionString = $ConnectionString
 	#Abrimos la conexi�n
     $Connection.Open()
 }
 
 Conect_database
+
+$sql = New-Object MySql.Data.MySqlClient.MySqlCommand
+$sql.Connection = $Connection
+$sql.CommandText = 'Log_DHCP()'
+$sql.ExecuteNonQuery() | Out-Null
 
 $Ambitos = Get-DHCPServerv4Scope
 foreach ($Ambito in $Ambitos) {

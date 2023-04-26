@@ -14,6 +14,11 @@ function Conect_database {
 
 Conect_database
 
+$sql = New-Object MySql.Data.MySqlClient.MySqlCommand
+$sql.Connection = $Connection
+$sql.CommandText = 'Log_AD()'
+$sql.ExecuteNonQuery() | Out-Null
+
 $Usuarios = Get-AdUser -Filter *
 foreach ($Usuario in $Usuarios) {
     $sql = New-Object MySql.Data.MySqlClient.MySqlCommand
