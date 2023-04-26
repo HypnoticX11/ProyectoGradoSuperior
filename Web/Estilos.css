@@ -5,9 +5,11 @@ body{
 }
 
 h1{
+  font-weight: bold;
   text-align: center;
   color: antiquewhite;
 }
+
 
 .barra {
   margin: auto;
@@ -24,3 +26,10 @@ h1{
   border-radius: 10px;
 }
 
+
+.CP{
+  position:absolute;
+  bottom:0;
+  right: 0;
+  color:rgba(0,0,0,0.7)
+}
