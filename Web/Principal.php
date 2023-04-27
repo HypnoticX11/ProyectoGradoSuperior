@@ -83,13 +83,13 @@
       <div class="relleno" style="width: <?php echo $porcentaje_Disco; ?>%; background-color: <?php echo $Color_Disco; ?>;"></div>
     </div><br><br>
 
-<?php
-      $sql = "SELECT * FROM Datos_Equipos Where IP='192.168.1.2'";
+    <?php
+      $sql = "SELECT * FROM Datos_Equipos Where IP='192.168.1.3'";
       $resultado = mysqli_query($conn, $sql);
 
       $resultado = mysqli_fetch_assoc($resultado);
 
-      echo "<p class='Datos' style='margin-left: 1400px; margin-top: -140px; font-size: 18px;'> IP: " . $resultado["IP"] . "</p><br>";
+      echo "<p class='Datos' style='margin-left: 1385px; margin-top: -209px; font-size: 18px;'> IP: " . $resultado["IP"] . "</p><br>";
       
       
       $Ram_total = $resultado["RAM_Total"];
@@ -112,36 +112,35 @@
       if($porcentaje_Disco > 90){$Color_Disco = "red";}else{$Color_Disco = "#4CAF50";}
     ?>
     
-    <div style="display: flex; width: 300px; height: 10px; margin-left: 1430px; margin-top: -25px;">
+    <div style="display: flex; width: 300px; height: 10px; margin-left: 1385px; margin-top: -25px;">
       <?php
       	echo "<p class='Datos' style='font-size: 18px;'> Uso CPU: " . $resultado["Porcentaje_Uso_CPU"] . "%";
       ?>
     </div>
     
-    <div class="barra" style="margin-left: 900px; margin-top: 7px;">
+    <div class="barra" style="margin-left: 1570px; margin-top: 7px;">
       <div class="relleno" style="width: <?php echo $porcentaje_CPU; ?>%; background-color: <?php echo $Color_CPU; ?>;"></div>
     </div><br><br>
     
-    <div style="display: flex; width: 300px; height: 10px; margin-left: 715px; margin-top: -25px;">
+    <div style="display: flex; width: 300px; height: 10px; margin-left: 1385px; margin-top: -25px;">
       <?php
       	echo "<p class='Datos' style='font-size: 18px;'> Uso RAM: " . $resultado["RAM_Uso"] . "GB</p>";
       ?>
     </div>
     
-    <div class="barra" style="margin-left: 900px; margin-top: 7px;">
+    <div class="barra" style="margin-left: 1570px; margin-top: 7px;">
       <div class="relleno" style="width: <?php echo $porcentaje_RAM; ?>%; background-color: <?php echo $Color_RAM; ?>;"></div>
     </div><br><br>
     
-    <div style="display: flex; width: 300px; height: 10px; margin-left: 715px; margin-top: -25px;">
+    <div style="display: flex; width: 300px; height: 10px; margin-left: 1385px; margin-top: -25px;">
       <?php
       	echo "<p class='Datos' style='font-size: 18px;'> Uso disco: " . $resultado["Espacio_Usado_Disco"] . "GB";
       ?>
     </div>
     
-    <div class="barra" style="margin-left: 900px; margin-top: 7px;">
+    <div class="barra" style="margin-left: 1570px; margin-top: 7px;">
       <div class="relleno" style="width: <?php echo $porcentaje_Disco; ?>%; background-color: <?php echo $Color_Disco; ?>;"></div>
     </div><br><br>
-    
 </div>
 
     <?php   
@@ -149,9 +148,34 @@
       mysqli_close($conn);
     ?>
 
-    <a href="ftp://192.168.1.4">
-    	<button>Logs</button>
+    <a href="Equipos.php">
+    	<button class="boton" style="margin-left: 20%; margin-top: 2%">Equipos</button>
     </a>
+    
+    <a href="DHCP.php">
+    	<button class="boton" style="margin-left: 2%; margin-top: 2%">DHCP</button>
+    </a>
+    
+    <a href="DNS.php">
+    	<button class="boton" style="margin-left: 2%; margin-top: 2%">DNS</button>
+    </a>
+    
+    <a href="AD.php">
+    	<button class="boton" style="margin-left: 2%; margin-top: 2%">AD</button>
+    </a>
+    
+    <a href="Impresoras.php">
+    	<button class="boton" style="margin-left: 2%; margin-top: 2%">Impresoras</button>
+    </a>
+    
+    <a href="Carpetas.php">
+    	<button class="boton" style="margin-left: 2%; margin-top: 2%">Carpetas</button>
+    </a><br><br><br>
+
+    <a href="ftp://192.168.1.4" style="margin-left: 47.5%; margin-top: 4%">
+    	<button class="boton">Logs</button>
+    </a>
+
     <p class="CP">@Copyright Diego 2023</p>
   </body>
 </html>
