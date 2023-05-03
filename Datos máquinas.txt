@@ -6,23 +6,29 @@ IPFire2 (172.16.20.1) 10.0.1.1
 	Usuario: root
 	Contraseña: 123
 
-
 Windows Server 1 (192.168.1.2) (DHCP | DNS | Impresión)
 	Usuarios: Administrador
 	Contraseña: Admin123.
 
-Windows Server 2 (192.168.1.3)
+Windows Server 2 (192.168.1.3) (AD | DNS)
 	Usuarios: Administrador
 	Contraseña: Admin123.
 
-Ubuntu Desktop (192.168.1.4)
+Ubuntu Desktop (192.168.1.4) (FTP | MySQL)
 	Usuario: Diego
 	Contraseña: 123
 
-Ubuntu Server
+Ubuntu Server (172.16.20.2) (Replica MySQL)
 	Usuario: Diego
 	Contraseña: 123
 
+Windows Server replica (172.16.20.3) (Replica AD)
+	Usuarios: Administrador
+	Contraseña: Admin123.
+
+Windows Server enrutador (10.0.0.2 | 10.0.1.2)
+	Usuarios: Administrador
+	Contraseña: Admin123.
 
 MySQL
 	Proyecto
