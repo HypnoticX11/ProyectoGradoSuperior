@@ -1,0 +1,1 @@
+https://learn.microsoft.com/es-es/windows-server/identity/ad-ds/manage/understand-security-groups
