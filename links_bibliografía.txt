@@ -1,1 +1,11 @@
-https://learn.microsoft.com/es-es/windows-server/identity/ad-ds/manage/understand-security-groups
+https://wiki.ipfire.org/
+
+https://dev.mysql.com/doc/
+
+https://httpd.apache.org/docs/
+
+https://developer.mozilla.org/en-US/docs
+
+https://www.php.net/docs.php
+
+https://learn.microsoft.com/es-es/powershell/
