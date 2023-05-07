@@ -1,7 +1,7 @@
 DROP PROCEDURE IF EXISTS INFO_AD.Log_AD;
 -- Cambiamos el delimitador por "$$" 
 DELIMITER $$
--- Creamos un procedimiento al que le pasamos un parámetro float
+-- Creamos un procedimiento
 CREATE PROCEDURE INFO_AD.Log_AD()
 
 -- Iniciamos el procedimiento
@@ -24,6 +24,7 @@ BEGIN
     EXECUTE statement;
     TRUNCATE TABLE Equipos_AD;
 
+-- Finalizamos el procedimiento
 END$$
 
 delimiter ;
